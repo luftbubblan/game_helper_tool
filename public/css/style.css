@@ -1,0 +1,72 @@
+:root {
+    --dark-red: #350c06;
+    --red: #731702;
+    --orange: #bf4904;
+    --gold: #d58015;
+    --white: #f2d1c9;
+    --pink: #d9a3a3;
+    --gray: #735755;
+    --brown: #261714;
+}
+
+body {
+    color: var(--brown);
+}
+
+#footer, #header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange);
+}
+
+#content {
+    display: flex;
+    min-height: 80vh;
+    justify-content: center;
+    padding: 5vh 5vh;
+    background-color: var(--dark-red);
+}
+
+th, td {
+    border: 1px solid;
+}
+
+table {
+    border-collapse: collapse;
+    display: block;
+}
+
+thead {
+    position: sticky; top: 0;
+    background-color: var(--gold);
+}
+
+th {
+    height: 70px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+td {
+    height: 40px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+form {
+    margin: 0;
+}
+
+#hidden {
+    visibility: hidden;
+}
+
+#notAcquired {
+    background-color: var(--white);
+}
+
+#acquired {
+    background-color: #D6F2B1;
+}
