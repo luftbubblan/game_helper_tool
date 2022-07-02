@@ -4,11 +4,26 @@
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
 
-	$items = $crudFunctions->fetchAllItems();
-
+	
 	echo "<pre>";
-	print_r($items);
+	print_r($_POST);
 	echo "</pre>";
+	
+	if(isset($_POST['acquiredFormBtn'])) {
+		$crudFunctions->Acquired($_POST['id']);
+		// header('Location: '.$_SERVER['REQUEST_URI']);
+	}
+	
+	if(isset($_POST['newItemFormBtn'])) {
+		$crudFunctions->NewItem($_POST['input']);
+		// header('Location: '.$_SERVER['REQUEST_URI']);
+	}
+	
+	$items = $crudFunctions->fetchAllItems();
+	
+	// echo "<pre>";
+	// print_r($items);
+	// echo "</pre>";
 
 	include('layout/header.php');
 ?>
@@ -25,36 +40,35 @@
 
 		<tbody>
 			<?php foreach($items as $item) {?>
-				<tr <?php echo ($item['Acquired']==1 ? 'id="acquired"' : 'id="notAcquired"');?>>
+				<tr <?php echo ($item['acquired']==1 ? 'id="acquired"' : 'id="notAcquired"');?>>
 					<td>
-						<?= $item['Name'] ?>
+						<?= $item['name'] ?>
 					</td>
 					<td>
-						<a href="<?= $item['Link'] ?>" target="_blank"><?= $item['Link'] ?></a>
+						<a href="<?= $item['link'] ?>" target="_blank"><?= $item['link'] ?></a>
 					</td>
 					<td>
-						<form id="acquiredForm" action="" method="POST">
-							<input type="hidden" name="id" value="<?= $item['Id'] ?>">
-							<input type="submit" value="Item Acquired" <?php echo ($item['Acquired']==1 ? 'id="hidden"' : '');?>>
-						</form>
+						<?php if(!$item['acquired']) { ?>
+							<form id="acquiredForm" action="" method="POST">
+								<input type="hidden" name="id" value="<?= $item['id'] ?>">
+								<input type="submit" name="acquiredFormBtn" value="Item Acquired">
+							</form>
+						<?php } else { ?>
+							<form id="deleteForm" action="" method="POST">
+								<input type="hidden" name="id" value="<?= $item['id'] ?>">
+								<input type="submit" name="deleteFormBtn" value="Delete Item">
+							</form>
+						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>
 		</tbody>
 	</table>
-</div>
 
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- Custom -->
-<script>
-	$("#acquiredForm").submit(function(){
-		console.log($($(this)[0][0]).val())
-		
-		$crudFunctions->Acquired($(e.target[0]).val());
-		
-		return false;
-	});
-</script>
+	<form id="newItemForm" action="" method="POST">
+		<input type="text" name="input" placeholder="Name of item" required>
+		<input type="submit" name="newItemFormBtn" value="New Item">
+	</form>
+</div>
 
 <?php include('layout/footer.php') ?>

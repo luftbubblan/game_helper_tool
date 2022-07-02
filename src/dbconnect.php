@@ -1,7 +1,7 @@
 <?php
 
 $host 	  = 'localhost';
-$database = 'elden-ring-tracker';
+$database = 'game_helper_tool';
 $user     = 'root';
 $password = 'root';
 $charset  = 'utf8mb4';

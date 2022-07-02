@@ -9,10 +9,6 @@
     --brown: #261714;
 }
 
-body {
-    color: var(--brown);
-}
-
 #footer, #header {
     display: flex;
     height: 10vh;
@@ -23,10 +19,12 @@ body {
 
 #content {
     display: flex;
+    flex-direction: column;
     min-height: 80vh;
-    justify-content: center;
+    align-items: center;
     padding: 5vh 5vh;
     background-color: var(--dark-red);
+    color: var(--brown);
 }
 
 th, td {
@@ -69,4 +67,8 @@ form {
 
 #acquired {
     background-color: #D6F2B1;
+}
+
+#newItemForm {
+    margin-top: 30px;
 }
