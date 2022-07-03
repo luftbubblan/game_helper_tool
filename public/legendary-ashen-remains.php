@@ -1,5 +1,5 @@
 <?php
-	$pageTitle = "LEGENDARY ARMAMENTS";
+	$pageTitle = "LEGENDARY ASHEN REMAINS";
 
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
@@ -35,6 +35,11 @@
 				$link = str_replace(' ', '+', $item['itemName']);
 				$link = "https://eldenring.wiki.fextralife.com/{$link}";
 			?>
+				<!-- <?php
+				echo "<pre>";
+				print_r($item);
+				echo "</pre>";
+				?> -->
 				<tr <?php echo ($item['acquired']==1 ? 'id="acquired"' : 'id="notAcquired"');?>>
 					<td>
 						<a href="<?= $link ?>" target="_blank"><?= $item['itemName'] ?></a>

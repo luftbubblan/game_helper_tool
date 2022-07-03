@@ -8,14 +8,14 @@ class CRUDFunctions {
     function fetchAllItems() {
 		$stmt = $this->pdo->query("
             SELECT * 
-            FROM elden_ring_acquired_items_tracker 
+            FROM elden_ring_legendary_armaments_acquired_items_tracker 
         ");
         return $stmt->fetchAll();
 	}
 
     function AcquiredItem($id) {
         $sql = "
-            UPDATE elden_ring_acquired_items_tracker
+            UPDATE elden_ring_legendary_armaments_acquired_items_tracker 
             SET
                 acquired = 1
             WHERE id = :id
@@ -29,7 +29,7 @@ class CRUDFunctions {
     function NewItem($input) {
         $input = ucwords($input);
         $sql = "
-            INSERT INTO elden_ring_acquired_items_tracker (
+            INSERT INTO elden_ring_legendary_armaments_acquired_items_tracker  (
                 itemName)
             VALUES (
                 :itemName)
@@ -42,7 +42,7 @@ class CRUDFunctions {
 
     function DeleteItem($id) {
         $sql = "
-            DELETE FROM elden_ring_acquired_items_tracker 
+            DELETE FROM elden_ring_legendary_armaments_acquired_items_tracker  
             WHERE id = :id;
         ";
         $stmt = $this->pdo->prepare($sql);
