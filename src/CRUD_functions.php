@@ -5,7 +5,7 @@ class CRUDFunctions {
         $this->pdo = $pdo;
     }
 
-    function fetchAllItems() {
+    function fetchAllLegendaryArmaments() {
 		$stmt = $this->pdo->query("
             SELECT * 
             FROM elden_ring_legendary_armaments_acquired_items_tracker 
@@ -13,7 +13,7 @@ class CRUDFunctions {
         return $stmt->fetchAll();
 	}
 
-    function AcquiredItem($id) {
+    function AcquiredLegendaryArmaments($id) {
         $sql = "
             UPDATE elden_ring_legendary_armaments_acquired_items_tracker 
             SET
@@ -26,7 +26,7 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function NewItem($input) {
+    function NewLegendaryArmaments($input) {
         $input = ucwords($input);
         $sql = "
             INSERT INTO elden_ring_legendary_armaments_acquired_items_tracker  (
@@ -40,7 +40,7 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function DeleteItem($id) {
+    function DeleteLegendaryArmaments($id) {
         $sql = "
             DELETE FROM elden_ring_legendary_armaments_acquired_items_tracker  
             WHERE id = :id;

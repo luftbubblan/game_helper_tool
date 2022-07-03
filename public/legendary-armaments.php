@@ -3,20 +3,21 @@
 
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
+    $tableName = "elden_ring_legendary_armaments_acquired_items_tracker";
 	
 	if(isset($_POST['acquiredFormBtn'])) {
-		$crudFunctions->AcquiredItem($_POST['id']);
+		$crudFunctions->AcquiredLegendaryArmaments($_POST['id']);
 	}
 	
 	if(isset($_POST['newItemFormBtn'])) {
-		$crudFunctions->NewItem($_POST['input']);
+		$crudFunctions->NewLegendaryArmaments($_POST['input']);
 	}
 
 	if(isset($_POST['deleteFormBtn'])) {
-		$crudFunctions->DeleteItem($_POST['id']);
+		$crudFunctions->DeleteLegendaryArmaments($_POST['id']);
 	}
 	
-	$items = $crudFunctions->fetchAllItems();
+	$items = $crudFunctions->fetchAllLegendaryArmaments();
 
 	include('layout/header.php');
 ?>
