@@ -13,7 +13,7 @@ class CRUDFunctions {
         return $stmt->fetchAll();
 	}
 
-    function Acquired($id) {
+    function AcquiredItem($id) {
         $sql = "
             UPDATE elden_ring_acquired_items_tracker
             SET
@@ -28,21 +28,25 @@ class CRUDFunctions {
 
     function NewItem($input) {
         $input = ucwords($input);
-        $name = $input;
-        $link = str_replace(' ', '+', $input);
-        $link = "https://eldenring.wiki.fextralife.com/{$link}";
         $sql = "
             INSERT INTO elden_ring_acquired_items_tracker (
-                name,
-                link)
+                itemName)
             VALUES (
-                :name,
-                :link)
+                :itemName)
             ";
     
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':link', $link);
+        $stmt->bindParam(':itemName', $input);
+        $stmt->execute();
+    }
+
+    function DeleteItem($id) {
+        $sql = "
+            DELETE FROM elden_ring_acquired_items_tracker 
+            WHERE id = :id;
+        ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
 }

@@ -13,5 +13,9 @@
 <body>
 
 <div id="header">
-    Header
+    <h1>Game Helper Tool</h1>
+    <div id="menu">
+        <a href="index.php">HOME</a>
+        <a href="legendary-armaments.php">Legendary Armaments tracker</a>
+    </div>
 </div>

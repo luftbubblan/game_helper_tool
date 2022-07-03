@@ -9,26 +9,53 @@
     --brown: #261714;
 }
 
+/* HEADER */
 #footer, #header {
     display: flex;
     height: 10vh;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: var(--orange);
+    color: var(--brown);
 }
 
-#content {
+#menu {
+    background-color: var(--pink);
+    overflow: hidden;
+}
+  
+#menu a {
+    float: left;
+    color: var(--brown);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#menu a:not(:last-child) {
+    border-right: 1px solid var(--brown);
+}
+
+#menu a:hover {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+/* HOME & LEGENDARY ARMAMENTS */
+#legendary-armaments-container, #home-container {
     display: flex;
     flex-direction: column;
     min-height: 80vh;
     align-items: center;
     padding: 5vh 5vh;
     background-color: var(--dark-red);
-    color: var(--brown);
+    color: var(--white);;
 }
 
+/* LEGENDARY ARMAMENTS */
 th, td {
-    border: 1px solid;
+    border: 1px solid var(--orange);
 }
 
 table {
@@ -53,10 +80,6 @@ td {
     text-align: center;
 }
 
-form {
-    margin: 0;
-}
-
 #hidden {
     visibility: hidden;
 }
@@ -71,4 +94,23 @@ form {
 
 #newItemForm {
     margin-top: 30px;
+}
+
+#newItemForm label {
+    color: var(--white);
+}
+
+#legendary-armaments-container input[type=submit] {
+    background-color: var(--white);
+    color: var(--brown);
+    border-color: var(--brown);
+}
+
+#legendary-armaments-container input[type=submit]:hover {
+    background-color: var(--gold);
+    color: var(--white);
+}
+
+#legendary-armaments-container input[type=text] {
+    background-color: var(--white);
 }
