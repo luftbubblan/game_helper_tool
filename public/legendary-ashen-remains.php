@@ -5,18 +5,18 @@
 	require('../src/CRUD_functions.php');
 	
 	if(isset($_POST['acquiredFormBtn'])) {
-		$crudFunctions->AcquiredItem($_POST['id']);
+		$crudFunctions->AcquiredLegendaryAshenRemains($_POST['id']);
 	}
 	
 	if(isset($_POST['newItemFormBtn'])) {
-		$crudFunctions->NewItem($_POST['input']);
+		$crudFunctions->NewLegendaryAshenRemains($_POST['input']);
 	}
 
 	if(isset($_POST['deleteFormBtn'])) {
-		$crudFunctions->DeleteItem($_POST['id']);
+		$crudFunctions->DeleteLegendaryAshenRemains($_POST['id']);
 	}
 	
-	$items = $crudFunctions->fetchAllItems();
+	$items = $crudFunctions->fetchAllLegendaryAshenRemains();
 
 	include('layout/header.php');
 ?>
@@ -35,11 +35,6 @@
 				$link = str_replace(' ', '+', $item['itemName']);
 				$link = "https://eldenring.wiki.fextralife.com/{$link}";
 			?>
-				<!-- <?php
-				echo "<pre>";
-				print_r($item);
-				echo "</pre>";
-				?> -->
 				<tr <?php echo ($item['acquired']==1 ? 'id="acquired"' : 'id="notAcquired"');?>>
 					<td>
 						<a href="<?= $link ?>" target="_blank"><?= $item['itemName'] ?></a>

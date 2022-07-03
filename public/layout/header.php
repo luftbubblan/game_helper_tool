@@ -17,5 +17,6 @@
     <div id="menu">
         <a href="index.php">HOME</a>
         <a href="legendary-armaments.php">Legendary Armaments tracker</a>
+        <a href="legendary-ashen-remains.php">Legendary Ashen Remains tracker</a>
     </div>
 </div>
