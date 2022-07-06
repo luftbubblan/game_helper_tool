@@ -28,7 +28,7 @@
 	include('layout/header.php');
 ?>
 
-<div id="legendary-armaments-container">
+<div id="legendary-container">
 	<table>
 		<thead>
 			<tr>

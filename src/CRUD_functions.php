@@ -28,10 +28,8 @@ class CRUDFunctions {
 
     function NewLegendaryArmaments($name, $link) {
         if(!$link) {
-            echo "no link";
             $link = "https://eldenring.wiki.fextralife.com/{$name}";
         } else {
-            echo "link";
             $link = "https://eldenring.wiki.fextralife.com/{$link}";
         }
         $name = ucwords($name);
@@ -81,17 +79,25 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function NewLegendaryAshenRemains($input) {
-        $input = ucwords($input);
+    function NewLegendaryAshenRemains($name, $link) {
+        if(!$link) {
+            $link = "https://eldenring.wiki.fextralife.com/{$name}";
+        } else {
+            $link = "https://eldenring.wiki.fextralife.com/{$link}";
+        }
+        $name = ucwords($name);
         $sql = "
             INSERT INTO elden_ring_legendary_ashen_remains_acquired_items_tracker  (
-                itemName)
+                itemName,
+                itemLink)
             VALUES (
-                :itemName)
+                :itemName,
+                :itemLink)
             ";
     
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':itemName', $input);
+        $stmt->bindParam(':itemName', $name);
+        $stmt->bindParam(':itemLink', $link);
         $stmt->execute();
     }
 

@@ -43,14 +43,14 @@
 }
 
 /* HOME & LEGENDARY ARMAMENTS */
-#legendary-armaments-container, #home-container {
+#legendary-container, #home-container {
     display: flex;
     flex-direction: column;
     min-height: 80vh;
     align-items: center;
     padding: 5vh 5vh;
     background-color: var(--dark-red);
-    color: var(--white);;
+    color: var(--white);
 }
 
 /* LEGENDARY ARMAMENTS */
@@ -100,17 +100,17 @@ td {
     color: var(--white);
 }
 
-#legendary-armaments-container input[type=submit] {
+#legendary-container input[type=submit] {
     background-color: var(--white);
     color: var(--brown);
     border-color: var(--brown);
 }
 
-#legendary-armaments-container input[type=submit]:hover {
+#legendary-container input[type=submit]:hover {
     background-color: var(--gold);
     color: var(--white);
 }
 
-#legendary-armaments-container input[type=text] {
+#legendary-container input[type=text] {
     background-color: var(--white);
 }

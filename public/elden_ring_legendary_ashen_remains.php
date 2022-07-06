@@ -9,7 +9,7 @@
 	}
 	
 	if(isset($_POST['newItemFormBtn'])) {
-		$crudFunctions->NewLegendaryAshenRemains($_POST['input']);
+		$crudFunctions->NewLegendaryAshenRemains($_POST['name'], $_POST['customLink']);
 	}
 
 	if(isset($_POST['deleteFormBtn'])) {
@@ -21,7 +21,7 @@
 	include('layout/header.php');
 ?>
 
-<div id="legendary-armaments-container">
+<div id="legendary-container">
 	<table>
 		<thead>
 			<tr>
@@ -31,13 +31,10 @@
 		</thead>
 
 		<tbody>
-			<?php foreach($items as $item) { 
-				$link = str_replace(' ', '+', $item['itemName']);
-				$link = "https://eldenring.wiki.fextralife.com/{$link}";
-			?>
+			<?php foreach($items as $item) { ?>
 				<tr <?php echo ($item['acquired']==1 ? 'id="acquired"' : 'id="notAcquired"');?>>
 					<td>
-						<a href="<?= $link ?>" target="_blank"><?= $item['itemName'] ?></a>
+						<a href="<?= $item['itemLink'] ?>" target="_blank"><?= $item['itemName'] ?></a>
 					</td>
 					<td>
 						<?php if(!$item['acquired']) { ?>
@@ -58,8 +55,10 @@
 	</table>
 
 	<form id="newItemForm" action="" method="POST">
-        <label for="input">Name of new item to track</label><br>
-		<input type="text" name="input" required>
+        <label for="name">Name of new item to track</label><br>
+		<input type="text" name="name" required><br>
+        <label for="customLink">Custom Wiki Link</label><br>
+		<input type="text" name="customLink"><br>
 		<input type="submit" name="newItemFormBtn" value="New Item">
 	</form>
 </div>
