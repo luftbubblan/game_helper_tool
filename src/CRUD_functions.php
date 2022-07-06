@@ -26,17 +26,27 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function NewLegendaryArmaments($input) {
-        $input = ucwords($input);
+    function NewLegendaryArmaments($name, $link) {
+        if(!$link) {
+            echo "no link";
+            $link = "https://eldenring.wiki.fextralife.com/{$name}";
+        } else {
+            echo "link";
+            $link = "https://eldenring.wiki.fextralife.com/{$link}";
+        }
+        $name = ucwords($name);
         $sql = "
             INSERT INTO elden_ring_legendary_armaments_acquired_items_tracker  (
-                itemName)
+                itemName,
+                itemLink)
             VALUES (
-                :itemName)
+                :itemName,
+                :itemLink)
             ";
     
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':itemName', $input);
+        $stmt->bindParam(':itemName', $name);
+        $stmt->bindParam(':itemLink', $link);
         $stmt->execute();
     }
 

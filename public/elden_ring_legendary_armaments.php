@@ -3,21 +3,27 @@
 
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
-    $tableName = "elden_ring_legendary_armaments_acquired_items_tracker";
+
+	// echo "<pre>";
+	// print_r($_POST);
+	// echo "</pre>";
 	
 	if(isset($_POST['acquiredFormBtn'])) {
 		$crudFunctions->AcquiredLegendaryArmaments($_POST['id']);
 	}
 	
 	if(isset($_POST['newItemFormBtn'])) {
-		$crudFunctions->NewLegendaryArmaments($_POST['input']);
-	}
-
-	if(isset($_POST['deleteFormBtn'])) {
-		$crudFunctions->DeleteLegendaryArmaments($_POST['id']);
+		$crudFunctions->NewLegendaryArmaments($_POST['name'], $_POST['customLink']);
 	}
 	
-	$items = $crudFunctions->fetchAllLegendaryArmaments();
+	if(isset($_POST['deleteFormBtn'])) {
+			$crudFunctions->DeleteLegendaryArmaments($_POST['id']);
+		}
+		
+		$items = $crudFunctions->fetchAllLegendaryArmaments();
+		// echo "<pre>";
+		// print_r($items);
+		// echo "</pre>";
 
 	include('layout/header.php');
 ?>
@@ -32,13 +38,10 @@
 		</thead>
 
 		<tbody>
-			<?php foreach($items as $item) { 
-				$link = str_replace(' ', '+', $item['itemName']);
-				$link = "https://eldenring.wiki.fextralife.com/{$link}";
-			?>
+			<?php foreach($items as $item) { ?>
 				<tr <?php echo ($item['acquired']==1 ? 'id="acquired"' : 'id="notAcquired"');?>>
 					<td>
-						<a href="<?= $link ?>" target="_blank"><?= $item['itemName'] ?></a>
+						<a href="<?= $item['itemLink'] ?>" target="_blank"><?= $item['itemName'] ?></a>
 					</td>
 					<td>
 						<?php if(!$item['acquired']) { ?>
@@ -59,8 +62,10 @@
 	</table>
 
 	<form id="newItemForm" action="" method="POST">
-        <label for="input">Name of new item to track</label><br>
-		<input type="text" name="input" required>
+        <label for="name">Name of new item to track</label><br>
+		<input type="text" name="name" required><br>
+        <label for="customLink">Custom Wiki Link</label><br>
+		<input type="text" name="customLink"><br>
 		<input type="submit" name="newItemFormBtn" value="New Item">
 	</form>
 </div>
