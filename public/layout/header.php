@@ -16,7 +16,8 @@
     <h1>Game Helper Tool</h1>
     <div id="menu">
         <a href="index.php">HOME</a>
-        <a href="elden_ring_legendary_armaments.php">Legendary Armaments tracker</a>
-        <a href="elden_ring_legendary_ashen_remains.php">Legendary Ashen Remains tracker</a>
+        <a href="elden_ring_gear_tracker.php">Gear</a>
+        <a href="elden_ring_legendary_armaments.php">Armaments</a>
+        <a href="elden_ring_legendary_ashen_remains.php">Ashes</a>
     </div>
 </div>

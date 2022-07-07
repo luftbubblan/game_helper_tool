@@ -3,20 +3,29 @@
 
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
+
+	$tableName = "elden_ring_legendary_ashen_remains_acquired_items_tracker";
+	
+	// echo "<pre>";
+	// print_r($_POST);
+	// echo "</pre>";
 	
 	if(isset($_POST['acquiredFormBtn'])) {
-		$crudFunctions->AcquiredLegendaryAshenRemains($_POST['id']);
+		$crudFunctions->AcquireItem($_POST['id'], $tableName);
 	}
 	
 	if(isset($_POST['newItemFormBtn'])) {
-		$crudFunctions->NewLegendaryAshenRemains($_POST['name'], $_POST['customLink']);
-	}
-
-	if(isset($_POST['deleteFormBtn'])) {
-		$crudFunctions->DeleteLegendaryAshenRemains($_POST['id']);
+		$crudFunctions->NewItem($_POST['name'], $_POST['customLink'], $tableName);
 	}
 	
-	$items = $crudFunctions->fetchAllLegendaryAshenRemains();
+	if(isset($_POST['deleteFormBtn'])) {
+		$crudFunctions->DeleteItem($_POST['id'], $tableName);
+	}
+		
+	$items = $crudFunctions->fetchAllItems($tableName);
+	// echo "<pre>";
+	// print_r($items);
+	// echo "</pre>";
 
 	include('layout/header.php');
 ?>

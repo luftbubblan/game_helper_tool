@@ -5,17 +5,17 @@ class CRUDFunctions {
         $this->pdo = $pdo;
     }
 
-    function fetchAllLegendaryArmaments() {
+    function fetchAllItems($tableName) {
 		$stmt = $this->pdo->query("
             SELECT * 
-            FROM elden_ring_legendary_armaments_acquired_items_tracker 
+            FROM .$tableName 
         ");
         return $stmt->fetchAll();
 	}
 
-    function AcquiredLegendaryArmaments($id) {
+    function AcquireItem($id, $tableName) {
         $sql = "
-            UPDATE elden_ring_legendary_armaments_acquired_items_tracker 
+            UPDATE .$tableName 
             SET
                 acquired = 1
             WHERE id = :id
@@ -26,7 +26,7 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function NewLegendaryArmaments($name, $link) {
+    function NewItem($name, $link, $tableName) {
         if(!$link) {
             $link = "https://eldenring.wiki.fextralife.com/{$name}";
         } else {
@@ -34,7 +34,7 @@ class CRUDFunctions {
         }
         $name = ucwords($name);
         $sql = "
-            INSERT INTO elden_ring_legendary_armaments_acquired_items_tracker  (
+            INSERT INTO .$tableName  (
                 itemName,
                 itemLink)
             VALUES (
@@ -48,62 +48,9 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function DeleteLegendaryArmaments($id) {
+    function DeleteItem($id, $tableName) {
         $sql = "
-            DELETE FROM elden_ring_legendary_armaments_acquired_items_tracker  
-            WHERE id = :id;
-        ";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-    }
-
-    function fetchAllLegendaryAshenRemains() {
-		$stmt = $this->pdo->query("
-            SELECT * 
-            FROM elden_ring_legendary_ashen_remains_acquired_items_tracker 
-        ");
-        return $stmt->fetchAll();
-	}
-
-    function AcquiredLegendaryAshenRemains($id) {
-        $sql = "
-            UPDATE elden_ring_legendary_ashen_remains_acquired_items_tracker 
-            SET
-                acquired = 1
-            WHERE id = :id
-        ";
-        
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-    }
-
-    function NewLegendaryAshenRemains($name, $link) {
-        if(!$link) {
-            $link = "https://eldenring.wiki.fextralife.com/{$name}";
-        } else {
-            $link = "https://eldenring.wiki.fextralife.com/{$link}";
-        }
-        $name = ucwords($name);
-        $sql = "
-            INSERT INTO elden_ring_legendary_ashen_remains_acquired_items_tracker  (
-                itemName,
-                itemLink)
-            VALUES (
-                :itemName,
-                :itemLink)
-            ";
-    
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':itemName', $name);
-        $stmt->bindParam(':itemLink', $link);
-        $stmt->execute();
-    }
-
-    function DeleteLegendaryAshenRemains($id) {
-        $sql = "
-            DELETE FROM elden_ring_legendary_ashen_remains_acquired_items_tracker  
+            DELETE FROM .$tableName  
             WHERE id = :id;
         ";
         $stmt = $this->pdo->prepare($sql);
