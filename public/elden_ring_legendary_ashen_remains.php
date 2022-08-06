@@ -4,7 +4,8 @@
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
 
-	$tableName = "elden_ring_legendary_ashen_remains_acquired_items_tracker";
+	$tableName = "elden_ring_tracker";
+    $trackerNumber = 2;
 	
 	// echo "<pre>";
 	// print_r($_POST);
@@ -15,14 +16,14 @@
 	}
 	
 	if(isset($_POST['newItemFormBtn'])) {
-		$crudFunctions->NewItem($_POST['name'], $_POST['customLink'], $tableName);
+		$crudFunctions->NewItem($_POST['name'], $_POST['customLink'], $tableName, $trackerNumber);
 	}
 	
 	if(isset($_POST['deleteFormBtn'])) {
 		$crudFunctions->DeleteItem($_POST['id'], $tableName);
 	}
 		
-	$items = $crudFunctions->fetchAllItems($tableName);
+	$items = $crudFunctions->fetchAllItemsWhere($tableName, $trackerNumber);
 	// echo "<pre>";
 	// print_r($items);
 	// echo "</pre>";
@@ -31,6 +32,7 @@
 ?>
 
 <div id="legendary-container">
+	<h1>LEGENDARY ASHEN REMAINS</h1>
 	<table>
 		<thead>
 			<tr>

@@ -5,11 +5,15 @@ class CRUDFunctions {
         $this->pdo = $pdo;
     }
 
-    function fetchAllItems($tableName) {
-		$stmt = $this->pdo->query("
+    function fetchAllItemsWhere($tableName, $typeOfTrackerNumber) {
+		$sql = "
             SELECT * 
-            FROM .$tableName 
-        ");
+            FROM .$tableName
+            WHERE typeOfTrackerNumber = :typeOfTrackerNumber
+        ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':typeOfTrackerNumber', $typeOfTrackerNumber);
+        $stmt->execute();
         return $stmt->fetchAll();
 	}
 
@@ -26,7 +30,7 @@ class CRUDFunctions {
         $stmt->execute();
     }
 
-    function NewItem($name, $link, $tableName) {
+    function NewItem($name, $link, $tableName, $trackerNumber) {
         if(!$link) {
             $link = "https://eldenring.wiki.fextralife.com/{$name}";
         } else {
@@ -36,15 +40,18 @@ class CRUDFunctions {
         $sql = "
             INSERT INTO .$tableName  (
                 itemName,
-                itemLink)
+                itemLink,
+                typeOfTrackerNumber)
             VALUES (
                 :itemName,
-                :itemLink)
+                :itemLink,
+                :typeOfTrackerNumber)
             ";
     
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':itemName', $name);
         $stmt->bindParam(':itemLink', $link);
+        $stmt->bindParam(':typeOfTrackerNumber', $trackerNumber);
         $stmt->execute();
     }
 
