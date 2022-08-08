@@ -51,12 +51,12 @@
 						<?php if(!$item['acquired']) { ?>
 							<form id="acquiredForm" action="" method="POST">
 								<input type="hidden" name="id" value="<?= $item['id'] ?>">
-								<input type="submit" name="acquiredFormBtn" value="Item Acquired">
+								<input type="submit" name="acquiredFormBtn" value="Acquired">
 							</form>
 						<?php } else { ?>
 							<form id="deleteForm" action="" method="POST">
 								<input type="hidden" name="id" value="<?= $item['id'] ?>">
-								<input type="submit" name="deleteFormBtn" value="Delete Item">
+								<input type="submit" name="deleteFormBtn" value="Delete">
 							</form>
 						<?php } ?>
 					</td>

@@ -19,5 +19,8 @@
         <a href="elden_ring_gear_tracker.php">Gear</a>
         <a href="elden_ring_legendary_armaments.php">Armaments</a>
         <a href="elden_ring_legendary_ashen_remains.php">Ashes</a>
+        <a href="elden_ring_legendary_talismans.php">Talismans</a>
+        <a href="elden_ring_legendary_spells.php">Spells</a>
+        <a href="elden_ring_boss_kills.php">Boss kills</a>
     </div>
 </div>

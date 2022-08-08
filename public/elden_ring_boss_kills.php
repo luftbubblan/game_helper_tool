@@ -1,12 +1,12 @@
 <?php
-	$pageTitle = "LEGENDARY ASHEN REMAINS";
+	$pageTitle = "BOSS KILLS";
 
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
 
 	$tableName = "elden_ring_tracker";
-    $trackerNumber = 2;
-	
+    $trackerNumber = 6;
+
 	// echo "<pre>";
 	// print_r($_POST);
 	// echo "</pre>";
@@ -32,7 +32,7 @@
 ?>
 
 <div id="legendary-container">
-	<h1>LEGENDARY ASHEN REMAINS</h1>
+	<h1>BOSS KILLS</h1>
 	<table>
 		<thead>
 			<tr>
@@ -66,7 +66,7 @@
 	</table>
 
 	<form id="newItemForm" action="" method="POST">
-        <label for="name">Name of new item to track</label><br>
+        <label for="name">Name of new boss to track</label><br>
 		<input type="text" name="name" required><br>
         <label for="customLink">Custom Wiki Link</label><br>
 		<input type="text" name="customLink"><br>

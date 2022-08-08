@@ -1,12 +1,12 @@
 <?php
-	$pageTitle = "LEGENDARY ASHEN REMAINS";
+	$pageTitle = "LEGENDARY TALISMANS";
 
 	require('../src/config.php');
 	require('../src/CRUD_functions.php');
 
 	$tableName = "elden_ring_tracker";
-    $trackerNumber = 2;
-	
+    $trackerNumber = 4;
+
 	// echo "<pre>";
 	// print_r($_POST);
 	// echo "</pre>";
@@ -32,7 +32,7 @@
 ?>
 
 <div id="legendary-container">
-	<h1>LEGENDARY ASHEN REMAINS</h1>
+	<h1>LEGENDARY TALISMANS</h1>
 	<table>
 		<thead>
 			<tr>
